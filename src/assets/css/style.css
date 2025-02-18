@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "./dark-mode.css";
+
+/* 移除全局过渡效果，因为可能与 Tailwind 4.0 冲突 */
+
+/* 确保暗色模式样式正确应用 */
