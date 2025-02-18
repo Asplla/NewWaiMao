@@ -37,7 +37,7 @@
       <!-- 标记点和连接线 -->
       <div v-if="currentProvince && hasProvinceData(currentProvince)"
         class="marker-container"
-        :style="getMarkerPosition(currentProvince.i)">
+        v-bind="{ style: getMarkerPosition(currentProvince.i) }">
         <div class="marker-point"></div>
         <div class="marker-line"></div>
       </div>
@@ -46,7 +46,7 @@
       <div 
         v-if="currentProvince && hasProvinceData(currentProvince)"
         class="map-tooltip"
-        :style="getTooltipPosition(currentProvince.i)"
+        v-bind="{ style: getTooltipPosition(currentProvince.i) }"
       >
         <div class="tooltip-content">
           <h3>{{ language === 'zh' ? currentProvince.n.c : currentProvince.n.e }}</h3>
@@ -73,6 +73,13 @@ interface ProvinceData {
     c: string
     e: string
   }
+}
+
+interface StylePosition {
+  position: 'absolute' | 'relative' | 'fixed' | 'static';
+  left?: string;
+  top?: string;
+  transform?: string;
 }
 
 const mapSvg = ref<SVGSVGElement | null>(null)
@@ -186,11 +193,15 @@ const optimizePosition = (centroid: { x: number; y: number }, path: SVGPathEleme
   }
 }
 
-const getMarkerPosition = (provinceId: string) => {
-  if (!mapSvg.value) return {}
+const getMarkerPosition = (provinceId: string): StylePosition => {
+  if (!mapSvg.value) return {
+    position: 'absolute'
+  }
   
   const path = mapSvg.value.querySelector(`#${provinceId}`) as SVGPathElement
-  if (!path) return {}
+  if (!path) return {
+    position: 'absolute'
+  }
 
   const point = mapSvg.value.createSVGPoint()
   
@@ -205,7 +216,9 @@ const getMarkerPosition = (provinceId: string) => {
   
   // 获取当前的变换矩阵
   const ctm = mapSvg.value.getScreenCTM()
-  if (!ctm) return {}
+  if (!ctm) return {
+    position: 'absolute'
+  }
   
   // 转换点到屏幕坐标
   const screenPoint = point.matrixTransform(ctm)
@@ -221,11 +234,15 @@ const getMarkerPosition = (provinceId: string) => {
   }
 }
 
-const getTooltipPosition = (provinceId: string) => {
-  if (!mapSvg.value) return {}
+const getTooltipPosition = (provinceId: string): StylePosition => {
+  if (!mapSvg.value) return {
+    position: 'absolute'
+  }
   
   const path = mapSvg.value.querySelector(`#${provinceId}`) as SVGPathElement
-  if (!path) return {}
+  if (!path) return {
+    position: 'absolute'
+  }
 
   const point = mapSvg.value.createSVGPoint()
   const centroid = calculateCentroid(path)
@@ -237,7 +254,9 @@ const getTooltipPosition = (provinceId: string) => {
   point.y = optimizedPosition.y
   
   const ctm = mapSvg.value.getScreenCTM()
-  if (!ctm) return {}
+  if (!ctm) return {
+    position: 'absolute'
+  }
   
   const screenPoint = point.matrixTransform(ctm)
   const svgRect = mapSvg.value.getBoundingClientRect()
