@@ -1,7 +1,6 @@
 <template>
   <div class="dark-bg">
     <Toast :visible="toastVisible" :message="toastMessage" :type="toastType" />
-    <LoadingOverlay :visible="loadingVisible" :message="loadingMessage" />
     <!-- Hero Section -->
     <section id="home" class="relative flex items-center justify-center hero bg-primary">
       
@@ -358,15 +357,14 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import RegionMap from '@/components/RegionMap.vue'
 import Toast from '@/components/Toast.vue'
 import Loading from '@/components/Loading.vue'
-import LoadingOverlay from '@/components/LoadingOverlay.vue'
 import { useToast } from '@/utils/toast'
-import { useLoading } from '@/utils/loading'
+import { useLoadingOverlay } from '@/composables/useLoadingOverlay'
 import { useI18n } from 'vue-i18n'
 import { setLocale, type Locale, SUPPORT_LOCALES } from '@/i18n'
 
 const { t, locale: currentLocale } = useI18n()
 const { visible: toastVisible, message: toastMessage, type: toastType, showToast } = useToast()
-const { visible: loadingVisible, message: loadingMessage, showLoading, hideLoading } = useLoading()
+const { show: showLoading, hide: hideLoading } = useLoadingOverlay()
 
 const isSubmitting = ref(false)
 
@@ -506,9 +504,29 @@ const setVH = () => {
   document.documentElement.style.setProperty('--vh', `${vh}px`)
 }
 
-onMounted(() => {
+const isLoading = ref(true)
+
+// 创建一个方法来检查所有必要的资源是否加载完成
+const checkResourcesLoaded = () => {
+  // 这里可以添加检查逻辑
+  // 例如：检查地图数据是否加载完成
+  // 检查其他必要资源是否准备就绪
+  return new Promise((resolve) => {
+    // 示例：等待地图数据加载
+    setTimeout(resolve, 1000)
+  })
+}
+
+onMounted(async () => {
   setVH()
   window.addEventListener('resize', setVH)
+  try {
+    await checkResourcesLoaded()
+    isLoading.value = false
+  } catch (error) {
+    console.error('Failed to load resources:', error)
+    // 可以在这里添加错误处理逻辑
+  }
 })
 
 onUnmounted(() => {

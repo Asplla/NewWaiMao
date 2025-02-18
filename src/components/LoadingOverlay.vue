@@ -10,17 +10,16 @@
     <div v-if="visible" class="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm">
       <div class="flex flex-col items-center gap-4">
         <Loading size="lg" class="text-white" />
-        <span class="text-white text-sm">{{ message || 'Loading...' }}</span>
+        <span class="text-white text-sm">{{ message }}</span>
       </div>
     </div>
   </Transition>
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import Loading from './Loading.vue'
+import { useLoadingOverlay } from '@/composables/useLoadingOverlay'
 
-defineProps<{
-  visible: boolean
-  message?: string
-}>()
+const { visible, message } = storeToRefs(useLoadingOverlay())
 </script> 
