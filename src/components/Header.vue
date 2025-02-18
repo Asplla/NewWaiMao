@@ -1,7 +1,7 @@
 <template>
     <div>
         <header 
-            class="fixed top-0 left-0 right-0 z-99 transition-all duration-300 border-b dark-border"
+            class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b dark-border"
             :class="{ 'navbar-bg': isScrolled || isMenuOpen }"
         >
             <div class="container mx-auto px-6 py-5 flex justify-between items-center">
