@@ -1,9 +1,9 @@
 <template>
     <button 
-        class="md:hidden w-11 h-11 -mr-2 flex items-center justify-center"
+        class="md:hidden flex items-center justify-center"
         @click="$emit('click')"
     >
-        <div class="w-[22px] h-[22px] relative">
+        <div class="w-[22px] h-[22px] relative flex items-center justify-center">
             <span 
                 class="absolute h-[2.5px] w-[22px] bg-current transition-all duration-200"
                 :class="[
