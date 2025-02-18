@@ -17,9 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
 import Loading from './Loading.vue'
 import { useLoadingOverlay } from '@/composables/useLoadingOverlay'
 
-const { visible, message } = storeToRefs(useLoadingOverlay())
+const { visible, message } = useLoadingOverlay()
 </script> 

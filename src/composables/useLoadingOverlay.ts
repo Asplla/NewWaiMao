@@ -1,11 +1,11 @@
-import { ref, provide, inject } from 'vue'
+import { ref, provide, inject, type Ref } from 'vue'
 
 // 定义 Symbol key 用于 provide/inject
 const LoadingOverlayKey = Symbol('LoadingOverlay')
 
 export interface LoadingOverlayContext {
-  visible: boolean
-  message: string
+  visible: Ref<boolean>
+  message: Ref<string>
   show: (message?: string) => void
   hide: () => void
 }
