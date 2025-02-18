@@ -37,7 +37,7 @@
       <!-- 标记点和连接线 -->
       <div v-if="currentProvince && hasProvinceData(currentProvince)"
         class="marker-container"
-        v-bind="{ style: getMarkerPosition(currentProvince.i) }">
+        :style="getMarkerPosition(currentProvince.i)">
         <div class="marker-point"></div>
         <div class="marker-line"></div>
       </div>
@@ -46,8 +46,7 @@
       <div 
         v-if="currentProvince && hasProvinceData(currentProvince)"
         class="map-tooltip"
-        v-bind="{ style: getTooltipPosition(currentProvince.i) }"
-      >
+        :style="getTooltipPosition(currentProvince.i)">
         <div class="tooltip-content">
           <h3>{{ language === 'zh' ? currentProvince.n.c : currentProvince.n.e }}</h3>
           <p>{{ language === 'zh' ? currentProvince.p.c : currentProvince.p.e }}</p>
@@ -68,18 +67,21 @@ interface ProvinceData {
   n: {
     c: string
     e: string
+    [key: string]: string  // 添加索引签名
   }
   p: {
     c: string
     e: string
+    [key: string]: string  // 添加索引签名
   }
 }
 
 interface StylePosition {
-  position: 'absolute' | 'relative' | 'fixed' | 'static';
-  left?: string;
-  top?: string;
-  transform?: string;
+  position: 'absolute' | 'relative' | 'fixed' | 'static'
+  left?: string
+  top?: string
+  transform?: string
+  [key: string]: string | undefined  // 添加索引签名
 }
 
 const mapSvg = ref<SVGSVGElement | null>(null)
