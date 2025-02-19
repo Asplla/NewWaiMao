@@ -135,7 +135,7 @@ const submitForm = async () => {
       content: formData.value.content.trim()
     })
 
-    const response = await fetch('/api/phpinfo.php?mod=sendemail', {
+    const response = await fetch('/api/index.php?mod=sendemail', {
       method: 'POST',
       body: formDataToSend
     })
