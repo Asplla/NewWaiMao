@@ -23,19 +23,19 @@ export default {
     }
   },
   nav: {
-    home: '首页',
-    services: '服务',
-    about: '关于',
-    contact: '联系'
+    home: 'página principal',
+    services: 'Servicios',
+    about: 'Sobre',
+    contact: 'Contacto'
   },
   footer: {
     copyright: '© {year} Tiotecno. All rights reserved.',
     language: 'Español'
   },
   hero: {
-    title: '探索中国制造',
-    subtitle: '无限可能',
-    description: '专业采购服务，助您找到可靠的中国制造商'
+    title: 'Explorando made in China',
+    subtitle: 'Infinitas posibilidades',
+    description: 'Servicios profesionales de compras para ayudarle a encontrar fabricantes confiables en China'
   },
   services: {
     title: '我们的服务',

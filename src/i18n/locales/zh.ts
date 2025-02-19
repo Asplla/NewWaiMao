@@ -24,9 +24,9 @@ export default {
   },
   nav: {
     home: '首页',
-    services: '服务',
-    about: '关于',
-    contact: '联系'
+    services: '我们的服务',
+    about: '关于我们',
+    contact: '联系我们'
   },
   footer: {
     copyright: '© {year} Tiotecno. All rights reserved.',
@@ -34,7 +34,7 @@ export default {
   },
   hero: {
     title: '探索中国制造',
-    subtitle: '无限可能',
+    subtitle: '的无限可能',
     description: '专业采购服务，助您找到可靠的中国制造商'
   },
   services: {

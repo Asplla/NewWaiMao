@@ -2,7 +2,7 @@
   <div class="dark-bg">
     <Toast :visible="toastVisible" :message="toastMessage" :type="toastType" />
     <!-- Hero Section -->
-    <section id="home" class="relative flex items-center justify-center hero bg-primary">
+    <section id="home" class="relative flex items-center justify-center hero bg-primary" aria-label="Hero section">
       
       <div class="hero-bg absolute w-full h-full top-0 left-0 right-0 bottom-0">
         <video autoplay loop muted playsinline src="/src/video/glass-animation-5.mp4"></video>
@@ -23,7 +23,7 @@
       </div>
     </section>
     <!-- Services Section -->
-    <section id="services" class="py-20 services-section bg-secondary">
+    <section id="services" class="py-20 services-section bg-secondary" aria-label="Our services">
       <div class="container mx-auto px-6">
         <!-- Section Title -->
         <div class="text-center mb-16">
@@ -236,7 +236,7 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="about" class="py-20 bg-primary">
+    <section id="about" class="py-20 bg-primary" aria-label="About us">
       <div class="container mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4 tracking-tight">
