@@ -128,12 +128,6 @@ const submitForm = async () => {
     formDataToSend.append('email', formData.value.email.trim())
     formDataToSend.append('content', formData.value.content.trim())
     
-    // 添加调试日志
-    console.log('Sending form data:', {
-      name: formData.value.name.trim(),
-      email: formData.value.email.trim(),
-      content: formData.value.content.trim()
-    })
 
     const response = await fetch('/api/index.php?mod=sendemail', {
       method: 'POST',
