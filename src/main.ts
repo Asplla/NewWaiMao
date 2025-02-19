@@ -11,7 +11,6 @@ import LanguageSwitchDialog from './components/LanguageSwitchDialog.vue'
 const initializeApp = async () => {
   // 先检测用户语言
   const { detectedLocale, suggestedLocale, countryCode } = await detectUserLanguage()
-  console.log('Language detection result:', { detectedLocale, suggestedLocale, countryCode })
   setLocale(detectedLocale)
   setupI18n()
 
