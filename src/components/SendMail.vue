@@ -19,19 +19,20 @@
         v-model="formData.content"
         class="w-full p-3 md:p-4 rounded-lg bg-primary/50 text-white placeholder-primary-60 border border-[var(--border-primary)] hover:border-[var(--border-hover)] focus:border-[var(--border-hover)] focus:outline-none focus:ring-1 focus:ring-[var(--border-hover)] transition-all resize-none"
       ></textarea>
-    </div>
-    <div class="mt-6">
       <button
         @click="submitForm"
         :disabled="isSubmitting"
-        class="w-full p-3 md:p-4 rounded-lg bg-transparent text-white border border-[var(--border-primary)] 
+        class="w-full p-3 md:p-4 rounded-lg bg-white text-black border border-white 
         transition-all duration-200 ease-in-out 
-        hover:bg-white hover:text-black focus:outline-none cursor-pointer
-        disabled:opacity-50 disabled:cursor-not-allowed
-        disabled:hover:bg-transparent disabled:hover:text-black"
+        hover:bg-white/80 focus:outline-none cursor-pointer
+        disabled:opacity-100 disabled:cursor-not-allowed
+        disabled:bg-white/80"
       >
         <div class="flex items-center justify-center gap-2">
-          <Loading v-if="isSubmitting" size="sm" />
+          <Loading 
+            v-if="isSubmitting" 
+            size="sm"
+          />
           <span>{{ isSubmitting ? t('contact.form.sending') : t('contact.form.submit') }}</span>
         </div>
       </button>
@@ -44,11 +45,9 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Loading from './Loading.vue'
 import { useToast } from '@/utils/toast'
-import { useLoadingOverlay } from '@/composables/useLoadingOverlay'
 
 const { t } = useI18n()
 const { showToast } = useToast()
-const { show: showLoading, hide: hideLoading } = useLoadingOverlay()
 
 const isSubmitting = ref(false)
 const formData = ref({
@@ -121,7 +120,6 @@ const submitForm = async () => {
   }
   
   isSubmitting.value = true
-  showLoading('Sending message...')
 
   try {
     // 使用 FormData
@@ -181,7 +179,6 @@ const submitForm = async () => {
     })
   } finally {
     isSubmitting.value = false
-    hideLoading()
   }
 }
 </script> 

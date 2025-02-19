@@ -56,7 +56,7 @@ export default {
     }
   },
   map: {
-    title: 'Why going to china in person Actually saves money?',
+    title: 'Why Going To China In Person Actually Saves Money?',
     productionAreas: 'Major Production Areas in China',
     CompetitivePricing: 'Competitive Pricing',
     AccessToCompetitivePricingAndCostEffectiveManufacturingSolutions: 'Access to competitive pricing and cost-effective manufacturing solutions',
@@ -68,7 +68,7 @@ export default {
     FastTurnaroundTimesAndEfficientProductionProcesses: 'Fast turnaround times and efficient production processes'
   },
   weoffer: {
-    title: 'what We Provide',
+    title: 'What We Provide',
     subtitle: 'Comprehensive solutions for your sourcing needs',
     items: {
       translate: {

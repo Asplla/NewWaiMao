@@ -2,7 +2,7 @@
   <div class="dark-bg">
     <Toast :visible="toastVisible" :message="toastMessage" :type="toastType" />
     <!-- Hero Section -->
-    <section id="home" class="relative flex items-center justify-center hero bg-primary" aria-label="Hero section">
+    <section id="home" class="relative flex items-center justify-center hero bg-primary">
       
       <div class="hero-bg absolute w-full h-full top-0 left-0 right-0 bottom-0">
         <video autoplay loop muted playsinline src="/src/video/glass-animation-5.mp4"></video>
@@ -23,10 +23,10 @@
       </div>
     </section>
     <!-- Services Section -->
-    <section id="services" class="py-20 services-section bg-secondary" aria-label="Our services">
+    <section id="services" class="py-20 services-section bg-secondary">
       <div class="container mx-auto px-6">
         <!-- Section Title -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-10 md:mb-16">
           <h2 class="text-4xl md:text-5xl font-bold dark-text mb-4 tracking-tight">
             {{ t('services.title') }}
           </h2>
@@ -39,7 +39,7 @@
         <div class="container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Factory Visit Card -->
-          <div class="group relative card rounded-xl p-8 transition-colors duration-300">
+          <div class="group relative card rounded-xl p-6 md:p-8 transition-colors duration-300">
             <div class="flex flex-col h-full">
               <div class="mb-6">
                 <svg class="w-12 h-12 text-orange-400" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 21c1.147 -4.02 1.983 -8.027 2 -12h6c.017 3.973 .853 7.98 2 12" /><path d="M12.5 13h4.5c.025 2.612 .894 5.296 2 8" /><path d="M9 5a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1" /><path d="M3 21l19 0" /></svg>
@@ -54,7 +54,7 @@
           </div>
 
           <!-- Product Sourcing Card -->
-          <div class="group relative card rounded-xl p-8 transition-colors duration-300">
+          <div class="group relative card rounded-xl p-6 md:p-8 transition-colors duration-300">
             <div class="flex flex-col h-full">
               <div class="mb-6">
                 <svg class="w-12 h-12 text-green-400" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 17h-11v-14h-2" /><path d="M6 5l14 1l-1 7h-13" /></svg>
@@ -69,7 +69,7 @@
           </div>
 
           <!-- Price Negotiations Card -->
-          <div class="group relative card rounded-xl p-8 transition-colors duration-300">
+          <div class="group relative card rounded-xl p-6 md:p-8 transition-colors duration-300">
             <div class="flex flex-col h-full">
               <div class="text-primary-70 mb-6">
                 <svg class="w-12 h-12 text-yellow-400" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 10h-16l5.5 -6" /><path d="M4 14h16l-5.5 6" /></svg>
@@ -91,7 +91,7 @@
     <section class="py-20 bg-primary">
       <div class="container mx-auto px-6">
         <!-- Section Title -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-10 md:mb-16">
           <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4 tracking-tight">
             {{ t('map.title') }}
           </h2>
@@ -102,7 +102,7 @@
           <!-- Left Column - Cards -->
           <div class="lg:col-span-2 space-y-6">
             <!-- Card 1 - Price Advantage -->
-            <div class="card rounded-xl p-6">
+            <div class="card rounded-xl p-4 md:p-6">
               <h3 class="text-xl font-bold text-primary mb-3">
                 {{ t('map.CompetitivePricing') }}
               </h3>
@@ -112,7 +112,7 @@
             </div>
 
             <!-- Card 2 - Guanxi -->
-            <div class="card rounded-xl p-6">
+            <div class="card rounded-xl p-4 md:p-6">
               <h3 class="text-xl font-bold text-primary mb-3">
                 {{ t('map.StrongRelationships') }}
               </h3>
@@ -122,7 +122,7 @@
             </div>
 
             <!-- Card 3 - Mutual Value -->
-            <div class="card rounded-xl p-6">
+            <div class="card rounded-xl p-4 md:p-6">
               <h3 class="text-xl font-bold text-primary mb-3">
                 {{ t('map.QualityAssurance') }}
               </h3>
@@ -132,7 +132,7 @@
             </div>
 
             <!-- Card 4 - Time Efficiency -->
-            <div class="card rounded-xl p-6">
+            <div class="card rounded-xl p-4 md:p-6">
               <h3 class="text-xl font-bold text-primary mb-3">
                 {{ t('map.TimeEfficiency') }}
               </h3>
@@ -153,7 +153,7 @@
     <!-- We Offer Section -->
     <section class="py-20 bg-secondary">
       <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
+        <div class="text-center mb-10 md:mb-16">
           <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4 tracking-tight">
             {{ t('weoffer.title') }}
           </h2>
@@ -165,7 +165,7 @@
         <!-- Service Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <!-- Translation Card -->
-          <div class="card p-8 rounded-2xl">
+          <div class="card p-6 md:p-8 rounded-2xl">
             <div class="flex items-start gap-4">
               <div class="flex-shrink-0">
                 <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7" /><path d="M9 3v2c0 4.418 -2.239 8 -5 8" /><path d="M5 9c0 2.144 2.952 3.908 6.7 4" /><path d="M12 20l4 -9l4 9" /><path d="M19.1 18h-6.2" /></svg>
@@ -182,7 +182,7 @@
           </div>
 
           <!-- Transportation Card -->
-          <div class="card p-8 rounded-2xl">
+          <div class="card p-6 md:p-8 rounded-2xl">
             <div class="flex items-start gap-4">
               <div class="flex-shrink-0">
                 <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M18 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M4 17h-2v-11a1 1 0 0 1 1 -1h14a5 7 0 0 1 5 7v5h-2m-4 0h-8" /><path d="M16 5l1.5 7l4.5 0" /><path d="M2 10l15 0" /><path d="M7 5l0 5" /><path d="M12 5l0 5" /></svg>
@@ -199,7 +199,7 @@
           </div>
 
           <!-- Accommodation Card -->
-          <div class="card p-8 rounded-2xl">
+          <div class="card p-6 md:p-8 rounded-2xl">
             <div class="flex items-start gap-4">
               <div class="flex-shrink-0">
                 <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 6a1 1 0 0 1 .993 .883l.007 .117v6h6v-5a1 1 0 0 1 .883 -.993l.117 -.007h8a3 3 0 0 1 2.995 2.824l.005 .176v8a1 1 0 0 1 -1.993 .117l-.007 -.117v-3h-16v3a1 1 0 0 1 -1.993 .117l-.007 -.117v-11a1 1 0 0 1 1 -1z" /><path d="M7 8a2 2 0 1 1 -1.995 2.15l-.005 -.15l.005 -.15a2 2 0 0 1 1.995 -1.85z" /></svg>
@@ -216,7 +216,7 @@
           </div>
 
           <!-- Tourism Card -->
-          <div class="card p-8 rounded-2xl">
+          <div class="card p-6 md:p-8 rounded-2xl">
             <div class="flex items-start gap-4">
               <div class="flex-shrink-0">
                 <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 18.5l-3 -1.5l-6 3v-13l6 -3l6 3l6 -3v7.5" /><path d="M9 4v13" /><path d="M15 7v5.5" /><path d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879z" /><path d="M19 18v.01" /></svg>
@@ -236,9 +236,9 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="about" class="py-20 bg-primary" aria-label="About us">
+    <section id="about" class="py-20 bg-primary">
       <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
+        <div class="text-center mb-10 md:mb-16">
           <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4 tracking-tight">
             {{ t('about.title') }}
           </h2>
@@ -246,7 +246,7 @@
 
         <div class="flex justify-center">
           <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
-            <div class="w-48 h-48 md:w-72 md:h-72 rounded-full bg-gray-200 overflow-hidden flex-shrink-0 mb-8 md:mb-0">
+            <div class="w-36 h-36 md:w-72 md:h-72 rounded-full bg-gray-200 overflow-hidden flex-shrink-0 mb-0">
               <img src="/src/img/noavatar.svg" alt="Company Profile" class="w-full h-full object-cover" />
             </div>
             <div class="max-w-3xl">
@@ -280,7 +280,7 @@
     <section id="contact" class="py-20 bg-secondary">
       <div class="container mx-auto px-6">
         <!-- Section Title -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-10 md:mb-16">
           <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4 tracking-tight">
             Contact Us
           </h2>
@@ -292,21 +292,21 @@
           <div class="space-y-8 h-full flex flex-col justify-between">
             <!-- WhatsApp -->
             <div class="card rounded-2xl p-8 hover:bg-primary/50">
-              <div class="flex items-center gap-4 mb-4">
+              <div class="flex items-center gap-4 mb-2">
                 <svg class="w-12 h-12 text-green-500" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.497 4.409a10 10 0 0 1 -10.36 16.828l-.223 -.098l-4.759 .849l-.11 .011a1 1 0 0 1 -.11 0l-.102 -.013l-.108 -.024l-.105 -.037l-.099 -.047l-.093 -.058l-.014 -.011l-.012 -.007l-.086 -.073l-.077 -.08l-.067 -.088l-.056 -.094l-.034 -.07l-.04 -.108l-.028 -.128l-.012 -.102a1 1 0 0 1 0 -.125l.012 -.1l.024 -.11l.045 -.122l1.433 -3.304l-.009 -.014a10 10 0 0 1 1.549 -12.454l.215 -.203a10 10 0 0 1 13.226 -.217m-8.997 3.09a1.5 1.5 0 0 0 -1.5 1.5v1a6 6 0 0 0 6 6h1a1.5 1.5 0 0 0 0 -3h-1l-.144 .007a1.5 1.5 0 0 0 -1.128 .697l-.042 .074l-.022 -.007a4.01 4.01 0 0 1 -2.435 -2.435l-.008 -.023l.075 -.041a1.5 1.5 0 0 0 .704 -1.272v-1a1.5 1.5 0 0 0 -1.5 -1.5" /></svg>
                 <span class="text-xl md:text-2xl text-white font-bold">{{ t('contact.methods.whatsapp.title') }}</span>
               </div>
-              <p class="text-primary-60 mb-4">{{ t('contact.methods.whatsapp.desc') }}</p>
+              <p class="text-primary-60 mb-2">{{ t('contact.methods.whatsapp.desc') }}</p>
               <p class="text-white text-lg md:text-xl">{{ t('contact.methods.whatsapp.phone') }}</p>
             </div>
 
             <!-- Email -->
             <div class="card rounded-2xl p-8 hover:bg-primary/50">
-              <div class="flex items-center gap-4 mb-4">
+              <div class="flex items-center gap-4 mb-2">
                 <svg class="w-12 h-12 text-blue-400" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z" /><path d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z" /></svg>
                 <span class="text-xl md:text-2xl text-white font-bold">{{ t('contact.methods.email.title') }}</span>
               </div>
-              <p class="text-primary-60 mb-4">{{ t('contact.methods.email.desc') }}</p>
+              <p class="text-primary-60 mb-2">{{ t('contact.methods.email.desc') }}</p>
               <p class="text-white text-lg md:text-xl">
                 <a :href="`mailto:${t('contact.methods.email.emailName')}@${t('contact.methods.email.emailDomain')}`">
                   {{ t('contact.methods.email.emailName') }}@{{ t('contact.methods.email.emailDomain') }}
@@ -329,12 +329,10 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import RegionMap from '@/components/RegionMap.vue'
 import Toast from '@/components/Toast.vue'
-import Loading from '@/components/Loading.vue'
 import SendMail from '@/components/SendMail.vue'
 import { useToast } from '@/utils/toast'
 import { useLoadingOverlay } from '@/composables/useLoadingOverlay'
 import { useI18n } from 'vue-i18n'
-import { setLocale, type Locale, SUPPORT_LOCALES } from '@/i18n'
 
 const { t, locale: currentLocale } = useI18n()
 const { visible: toastVisible, message: toastMessage, type: toastType, showToast } = useToast()
