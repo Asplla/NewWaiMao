@@ -1,4 +1,9 @@
 export default {
+  meta: {
+    home: {
+      title: 'Tiotecno - 独立采购代理的中国工厂考察'
+    }
+  },
   languageSwitch: {
     title: '语言建议',
     toZh: {
@@ -24,7 +29,7 @@ export default {
     contact: '联系'
   },
   footer: {
-    copyright: '© {year} Your Company. All rights reserved.',
+    copyright: '© {year} Tiotecno. All rights reserved.',
     language: '简体中文'
   },
   hero: {
@@ -132,5 +137,5 @@ export default {
         noname: '请输入您的姓名'
       }
     }
-  }
+  },
 } 

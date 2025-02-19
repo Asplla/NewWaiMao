@@ -1,4 +1,9 @@
 export default {
+  meta: {
+    home: {
+      title: 'Tiotecno - Visita a Fábricas en China con Agente de Abastecimiento Independiente'
+    }
+  },
   languageSwitch: {
     title: '语言建议',
     toZh: {
@@ -24,7 +29,7 @@ export default {
     contact: '联系'
   },
   footer: {
-    copyright: '© {year} Your Company. All rights reserved.',
+    copyright: '© {year} Tiotecno. All rights reserved.',
     language: 'Español'
   },
   hero: {
@@ -132,5 +137,5 @@ export default {
         noname: '请输入您的姓名'
       }
     }
-  }
+  },
 } 

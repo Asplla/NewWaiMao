@@ -57,6 +57,14 @@ body {
   color: #fff;
 }
 
+.clip-invisible {
+  clip-path: polygon(-10% -10%, 110% -10%, 110% -10%, -10% -10%);
+}
+
+.clip-visible {
+  clip-path: polygon(-10% -10%, 110% 0%, 110% 110%, -10% 110%);
+}
+
 /* 文字样式 */
 .text-primary { color: var(--text-primary); }
 .text-primary-60 { color: var(--text-primary-60); }
@@ -84,6 +92,9 @@ body {
 
 /* ========== 4. 导航和交互组件 ========== */
 /* 导航栏 */
+.header{
+  height: 70px;
+}
 .navbar-bg {
   background-color: rgba(0, 0, 0, 0.8);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -342,7 +353,8 @@ button.dark-hover:hover {
 /* Hero Section 背景效果 */
 .hero {
   position: relative;
-  height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  /* height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom)); */
+  height: 100svh;
   overflow: hidden;
 }
 

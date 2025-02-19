@@ -14,7 +14,7 @@
               { country: COUNTRY_NAMES[(countryCode as CountryCode) || 'default']?.[suggestedLocale] }, 
               { locale: suggestedLocale }) }}
         </p>
-        <div class="flex justify-center gap-3">
+        <div class="flex flex-col md:flex-row justify-center gap-3">
           <button
             @click="$emit('switch')"
             class="px-6 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"

@@ -316,34 +316,7 @@
           </div>
 
           <!-- Right Column - Contact Form -->
-          <div class="h-full flex flex-col">
-            <div class="flex-1 space-y-6">
-              <input type="text" :placeholder="t('contact.form.name')"
-                v-model="formData.name"
-                class="w-full p-3 md:p-4 rounded-lg bg-primary/50 text-white placeholder-primary-60 border border-[var(--border-primary)] hover:border-[var(--border-hover)] focus:border-[var(--border-hover)] focus:outline-none focus:ring-1 focus:ring-[var(--border-hover)] transition-all">
-              <input type="email" :placeholder="t('contact.form.email')"
-                v-model="formData.email"
-                class="w-full p-3 md:p-4 rounded-lg bg-primary/50 text-white placeholder-primary-60 border border-[var(--border-primary)] hover:border-[var(--border-hover)] focus:border-[var(--border-hover)] focus:outline-none focus:ring-1 focus:ring-[var(--border-hover)] transition-all">
-              <textarea rows="4" :placeholder="t('contact.form.message')"
-                v-model="formData.content"
-                class="w-full p-3 md:p-4 rounded-lg bg-primary/50 text-white placeholder-primary-60 border border-[var(--border-primary)] hover:border-[var(--border-hover)] focus:border-[var(--border-hover)] focus:outline-none focus:ring-1 focus:ring-[var(--border-hover)] transition-all resize-none"></textarea>
-            </div>
-            <div class="mt-6">
-              <button
-                @click="submitForm"
-                :disabled="isSubmitting"
-                class="w-full p-3 md:p-4 rounded-lg bg-transparent text-white border border-[var(--border-primary)] 
-                transition-all duration-200 ease-in-out 
-                hover:bg-white hover:text-black focus:outline-none cursor-pointer
-                disabled:opacity-50 disabled:cursor-not-allowed
-                disabled:hover:bg-transparent disabled:hover:text-black">
-                <div class="flex items-center justify-center gap-2">
-                  <Loading v-if="isSubmitting" size="sm" />
-                  <span>{{ isSubmitting ? t('contact.form.sending') : t('contact.form.submit') }}</span>
-                </div>
-              </button>
-            </div>
-          </div>
+          <SendMail />
         </div>
       </div>
     </section>
@@ -357,6 +330,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import RegionMap from '@/components/RegionMap.vue'
 import Toast from '@/components/Toast.vue'
 import Loading from '@/components/Loading.vue'
+import SendMail from '@/components/SendMail.vue'
 import { useToast } from '@/utils/toast'
 import { useLoadingOverlay } from '@/composables/useLoadingOverlay'
 import { useI18n } from 'vue-i18n'
@@ -446,7 +420,14 @@ const submitForm = async () => {
     const formDataToSend = new FormData()
     formDataToSend.append('name', formData.value.name.trim())
     formDataToSend.append('email', formData.value.email.trim())
-    formData.value.content = formData.value.content.trim()
+    formDataToSend.append('content', formData.value.content.trim())
+    
+    // 添加调试日志
+    console.log('Sending form data:', {
+      name: formData.value.name.trim(),
+      email: formData.value.email.trim(),
+      content: formData.value.content.trim()
+    })
 
     const response = await fetch('/api/phpinfo.php?mod=sendemail', {
       method: 'POST',
@@ -455,18 +436,19 @@ const submitForm = async () => {
     
     const text = await response.text()
     console.log('Raw response:', text)
+
+    // 检查响应状态
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
     let data
     try {
       data = JSON.parse(text)
-      console.log('Server response:', data)
+      console.log('Parsed response:', data)
     } catch (e) {
-      showToast({ 
-        message: t('message.form.failed'),
-        type: 'error' 
-      })
-      isSubmitting.value = false
-      hideLoading()
-      return
+      console.error('Failed to parse response:', e)
+      throw new Error('Invalid server response')
     }
 
     if (data.code === 200 || data.code === '200') {
@@ -481,15 +463,12 @@ const submitForm = async () => {
         content: ''
       }
     } else {
-      showToast({ 
-        message: data.msg || t('message.form.failed'),
-        type: 'error' 
-      })
+      throw new Error(data.msg || 'Server error')
     }
   } catch (error) {
-    console.error('Error:', error)
+    console.error('Form submission error:', error)
     showToast({ 
-      message: t('message.form.networkError'),
+      message: error instanceof Error ? error.message : t('message.form.failed'),
       type: 'error' 
     })
   } finally {

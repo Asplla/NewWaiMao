@@ -1,4 +1,9 @@
 export default {
+  meta: {
+    home: {
+      title: 'Tiotecno - China Factory Tour with Independent Sourcing Agent'
+    }
+  },
   languageSwitch: {
     title: 'Language Suggestion',
     toZh: {
@@ -24,7 +29,7 @@ export default {
     contact: 'Contact'
   },
   footer: {
-    copyright: '© {year} Your Company. All rights reserved.',
+    copyright: '© {year} Tiotecno. All rights reserved.',
     language: 'English'
   },
   hero: {
