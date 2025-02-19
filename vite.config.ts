@@ -23,9 +23,13 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vendor': ['vue', 'vue-router', 'vue-i18n'],
-          'map': ['leaflet']
         }
       }
+    },
+    sourcemap: true,
+    commonjsOptions: {
+      include: [/node_modules/],
+      extensions: ['.js', '.cjs']
     }
   },
   server: {
