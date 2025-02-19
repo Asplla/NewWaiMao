@@ -23,13 +23,18 @@ const i18nInstance = createI18n({
 export const i18n = i18nInstance
 
 // 使用异步加载语言包
-const loadLocaleMessages = async (locale: string) => {
+const loadLocaleMessages = async (locale: Locale) => {
   const messages = await import(`./locales/${locale}.ts`)
   return messages.default
 }
 
-export const setLocale = async (locale: string) => {
+export const setLocale = async (locale: Locale) => {
   try {
+    // 验证语言是否支持
+    if (!SUPPORT_LOCALES.includes(locale)) {
+      throw new Error(`Unsupported locale: ${locale}`)
+    }
+
     const messages = await loadLocaleMessages(locale)
     i18n.global.setLocaleMessage(locale, messages)
     i18n.global.locale.value = locale
@@ -55,9 +60,9 @@ export const setLocale = async (locale: string) => {
 
 // 初始化时从 localStorage 读取语言设置
 export function setupI18n() {
-  const savedLocale = localStorage.getItem('locale') as Locale
-  if (savedLocale && SUPPORT_LOCALES.includes(savedLocale)) {
-    setLocale(savedLocale)
+  const savedLocale = localStorage.getItem('locale')
+  if (savedLocale && SUPPORT_LOCALES.includes(savedLocale as Locale)) {
+    setLocale(savedLocale as Locale)
   }
 
   return i18nInstance
