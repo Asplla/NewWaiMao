@@ -1,4 +1,4 @@
-import { ref, provide, inject, type Ref } from 'vue'
+import { ref, provide, inject, type Ref, readonly } from 'vue'
 
 // 定义 Symbol key 用于 provide/inject
 const LoadingOverlayKey = Symbol('LoadingOverlay')
@@ -10,30 +10,28 @@ export interface LoadingOverlayContext {
   hide: () => void
 }
 
-export function provideLoadingOverlay() {
+export const provideLoadingOverlay = () => {
   const visible = ref(false)
   const message = ref('')
-
-  const show = (msg: string = 'Loading...') => {
+  
+  const show = (msg = '') => {
     message.value = msg
     visible.value = true
   }
-
+  
   const hide = () => {
     visible.value = false
     message.value = ''
   }
-
-  const context: LoadingOverlayContext = {
-    visible,
-    message,
+  
+  provide(LoadingOverlayKey, {
+    visible: readonly(visible),
+    message: readonly(message),
     show,
     hide
-  }
-
-  provide(LoadingOverlayKey, context)
-
-  return context
+  })
+  
+  return { show, hide }
 }
 
 export function useLoadingOverlay() {

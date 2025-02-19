@@ -475,12 +475,6 @@ const submitForm = async () => {
   }
 }
 
-// VH 设置
-const setVH = () => {
-  const vh = window.innerHeight * 0.01
-  document.documentElement.style.setProperty('--vh', `${vh}px`)
-}
-
 const isLoading = ref(true)
 
 // 创建一个方法来检查所有必要的资源是否加载完成
@@ -495,8 +489,6 @@ const checkResourcesLoaded = () => {
 }
 
 onMounted(async () => {
-  setVH()
-  window.addEventListener('resize', setVH)
   try {
     await checkResourcesLoaded()
     isLoading.value = false
@@ -505,16 +497,4 @@ onMounted(async () => {
     // 可以在这里添加错误处理逻辑
   }
 })
-
-onUnmounted(() => {
-  window.removeEventListener('resize', setVH)
-})
 </script>
-
-<style scoped>
-.h-screen {
-  height: 100vh;
-  /* 移动端浏览器处理 */
-  height: calc(var(--vh, 1vh) * 100);
-}
-</style>

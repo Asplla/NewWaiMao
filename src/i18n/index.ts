@@ -22,15 +22,35 @@ const i18nInstance = createI18n({
 
 export const i18n = i18nInstance
 
-// 语言切换时保存到 localStorage
-export function setLocale(locale: Locale) {
-  i18nInstance.global.locale.value = locale
-  localStorage.setItem('locale', locale)
-  document.querySelector('html')?.setAttribute('lang', locale)
-  
-  // 更新页面标题
-  const titleKey = 'meta.home.title'
-  document.title = i18nInstance.global.t(titleKey)
+// 使用异步加载语言包
+const loadLocaleMessages = async (locale: string) => {
+  const messages = await import(`./locales/${locale}.ts`)
+  return messages.default
+}
+
+export const setLocale = async (locale: string) => {
+  try {
+    const messages = await loadLocaleMessages(locale)
+    i18n.global.setLocaleMessage(locale, messages)
+    i18n.global.locale.value = locale
+    
+    // 保存到 localStorage
+    localStorage.setItem('locale', locale)
+    
+    // 更新 HTML lang 属性
+    document.querySelector('html')?.setAttribute('lang', locale)
+    
+    // 更新页面标题
+    const titleKey = 'meta.home.title'
+    document.title = i18n.global.t(titleKey)
+    
+    // 更新 meta 标签
+    const metaConfig = await import('@/utils/seo').then(m => m.getMetaConfig(locale))
+    document.querySelector('meta[name="description"]')?.setAttribute('content', metaConfig.description)
+    document.querySelector('meta[name="keywords"]')?.setAttribute('content', metaConfig.keywords)
+  } catch (error) {
+    console.error(`Failed to load locale: ${locale}`, error)
+  }
 }
 
 // 初始化时从 localStorage 读取语言设置

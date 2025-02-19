@@ -23,37 +23,34 @@ const initializeApp = async () => {
   // 挂载应用
   app.mount('#app')
 
-  // 如果有建议的语言，显示切换提示
-  if (suggestedLocale) {
-    console.log('Creating language switch dialog...')
-    const dialog = document.createElement('div')
-    dialog.setAttribute('id', 'language-switch-dialog')
-    document.body.appendChild(dialog)
-    
-    // 创建新的应用实例来挂载对话框
-    const dialogApp = createApp(LanguageSwitchDialog, {
-      suggestedLocale,
-      countryCode,
-      onSwitch() {
-        console.log('Switching language to:', suggestedLocale)
-        setLocale(suggestedLocale)
-        localStorage.setItem('locale', suggestedLocale)
-        dialogApp.unmount()
-        document.body.removeChild(dialog)
-      },
-      onClose() {
-        console.log('Closing language dialog')
-        localStorage.setItem('languageSwitchDismissedAt', Date.now().toString())
-        dialogApp.unmount()
-        document.body.removeChild(dialog)
-      }
-    })
-    
-    // 确保对话框应用也使用 i18n
-    dialogApp.use(i18n)
-    dialogApp.mount(dialog)
-    console.log('Language switch dialog mounted')
-  }
+  // 监听应用就绪事件
+  window.addEventListener('app-ready', () => {
+    // 如果有建议的语言，显示切换提示
+    if (suggestedLocale) {
+      const dialog = document.createElement('div')
+      dialog.setAttribute('id', 'language-switch-dialog')
+      document.body.appendChild(dialog)
+      
+      const dialogApp = createApp(LanguageSwitchDialog, {
+        suggestedLocale,
+        countryCode,
+        onSwitch() {
+          setLocale(suggestedLocale)
+          localStorage.setItem('locale', suggestedLocale)
+          dialogApp.unmount()
+          document.body.removeChild(dialog)
+        },
+        onClose() {
+          localStorage.setItem('languageSwitchDismissedAt', Date.now().toString())
+          dialogApp.unmount()
+          document.body.removeChild(dialog)
+        }
+      })
+      
+      dialogApp.use(i18n)
+      dialogApp.mount(dialog)
+    }
+  })
 }
 
 // 初始化应用

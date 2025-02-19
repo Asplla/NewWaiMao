@@ -23,20 +23,28 @@ const { show: showLoading, hide: hideLoading } = provideLoadingOverlay()
 // 检查应用程序是否准备就绪
 const checkAppReady = () => {
   return new Promise<void>((resolve) => {
-    // 这里可以添加其他初始化检查
-    // 例如：等待字体加载、资源预加载等
-    setTimeout(resolve, 1000) // 给一个短暂的延迟以确保所有内容加载完成
+    setTimeout(resolve, 1000)
   })
 }
 
 // 初始化应用
 const initializeApp = async () => {
-  showLoading('Initializing...')
+  // 显示加载动画
+  showLoading()
+  
   try {
     await checkAppReady()
-  } finally {
-    hideLoading()
+    // 先显示内容
     initializing.value = false
+    // 等待一帧确保内容渲染
+    await new Promise(resolve => requestAnimationFrame(resolve))
+    // 然后隐藏加载动画
+    hideLoading()
+    // 发出应用就绪事件
+    window.dispatchEvent(new Event('app-ready'))
+  } catch (error) {
+    console.error('Failed to initialize app:', error)
+    hideLoading()
   }
 }
 

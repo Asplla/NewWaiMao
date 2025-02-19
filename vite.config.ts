@@ -18,16 +18,23 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['vue', 'vue-router', 'vue-i18n'],
+          'map': ['leaflet']
+        }
+      }
+    }
+  },
   server: {
     proxy: {
       '/api': {
         target: 'https://myphp-theta-three.vercel.app',
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-        headers: {
-          'Origin': 'https://tiotecno.vercel.app'
-        }
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }
