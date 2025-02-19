@@ -4,8 +4,10 @@ interface MetaConfig {
   keywords: string;
 }
 
+type SupportedLocale = 'en' | 'zh' | 'es';
+
 export const getMetaConfig = (locale: string): MetaConfig => {
-  const configs = {
+  const configs: Record<SupportedLocale, MetaConfig> = {
     en: {
       title: 'Tiotecno - China Factory Tour with Independent Sourcing Agent',
       description: 'Professional sourcing service helping you find reliable manufacturers in China. Factory visits, product sourcing, and price negotiations with no hidden fees.',
@@ -23,5 +25,5 @@ export const getMetaConfig = (locale: string): MetaConfig => {
     }
   };
   
-  return configs[locale] || configs.en;
+  return configs[locale as SupportedLocale] || configs.en;
 }; 
